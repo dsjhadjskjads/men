@@ -3,7 +3,7 @@
 ## MADE BY NORMI N40R2I#8855 and me ofc xd L BOZO
 Check this out too https://github.com/Normi-Dev/OAR
 
-##READ
+## READ
 PLEASE READ THIS WHOLE THING BEFORE YOU DM ME PLEASE MAN PLSSSSSS
 
 ## UPDATE 

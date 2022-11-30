@@ -1,6 +1,5 @@
 
-##MADE BY NORMI
-
+## MADE BY NORMI N40R2I#8855
 
 https://login.live.com/oauth20_authorize.srf?client_id=[CLIENT-ID]&response_type=code&redirect_uri=[REDIRECT-URI]&scope=XboxLive.signin+offline_access&state=NOT_NEEDED
 

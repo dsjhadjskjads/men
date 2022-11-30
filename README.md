@@ -18,8 +18,7 @@ https://login.live.com/oauth20_authorize.srf?client_id=[CLIENT-ID]&response_type
 2. Make a Microsoft Azure Application Registration https://portal.azure.com/  
        - create a new app registration  
        - name it something like "Verification Bot"  
-       - choose Personal Microsoft account, or a work or school account  
-       - link your heruko application  
+       - choose Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts
       
 3. Configure in index.js  
        - you need to change: 

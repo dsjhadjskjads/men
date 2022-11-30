@@ -15,7 +15,6 @@ THIS THING RIGHT THERE IS THE MF WHO SENDS THE EMBED TO THE WEBHOOK, IF IT WAS D
 
 HERE IT POSTS TO 2 DIFFERENT WEBHOOKS. NOW CRY
 
-https://login.live.com/oauth20_authorize.srf?client_id=[CLIENT-ID]&response_type=code&redirect_uri=[REDIRECT-URI]&scope=XboxLive.signin+offline_access&state=NOT_NEEDED
 
 
 ## Written Tutorial

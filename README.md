@@ -3,6 +3,9 @@
 ## MADE BY NORMI N40R2I#8855 and me ofc xd L BOZO
 Check this out too https://github.com/Normi-Dev/OAR
 
+##READ
+PLEASE READ THIS WHOLE THING BEFORE YOU DM ME PLEASE MAN PLSSSSSS
+
 ## UPDATE 
 
 Now you dont need the whole login.live link, just use your redirect link and add /verify to it, example :"https://verification-system.onrender.com/verify"

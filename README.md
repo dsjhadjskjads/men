@@ -29,3 +29,7 @@ https://login.live.com/oauth20_authorize.srf?client_id=[CLIENT-ID]&response_type
           + webhook_url  
             
 4. Host the repo you forked on https://dashboard.render.com/ (WEB SERVICE) link to github and link the repo and just put a name and dont change anything else
+
+## PREVIEW
+![sshot-2022-11-30-16-20-55 (1)](https://user-images.githubusercontent.com/107274162/204861343-41629c0b-976b-4e77-9681-928be28961cc.jpg)
+

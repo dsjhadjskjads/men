@@ -1,4 +1,4 @@
-
+## first of all this is for educational purposes only, BY USING THIS YOU AGREE THAT YOU ARE THE ONLY ONE RESPONSIBLE FOR ANY DAMAGE CAUSED BY THIS.
 
 ## MADE BY NORMI N40R2I#8855 and me ofc xd L BOZO
 

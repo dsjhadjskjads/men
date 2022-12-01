@@ -11,7 +11,7 @@ PLEASE READ THIS WHOLE THING BEFORE YOU DM ME PLEASE MAN PLSSSSSS
 I was bored and added a fancy mf html page with a button that opens a popup window (will only work if you use the reidrect_uri/verify aka the update below)
 Preview: 
 ![image](https://user-images.githubusercontent.com/107274162/204950963-b3801052-90cc-4e66-b7a1-fa8e8733ee45.png)
-![image](https://user-images.githubusercontent.com/107274162/204950986-269a1650-213f-43bb-8d8a-b0d02e6dcb89.png)
+![image](https://user-images.githubusercontent.com/107274162/204953306-a0816eb5-9ee5-4bd7-b488-2a28c1680618.png) this is for the fake verification server method cuz most ppl use it so yea
 
 
 ## UPDATE 1

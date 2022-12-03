@@ -6,6 +6,11 @@ Check this out too https://github.com/Normi-Dev/OAR
 ## READ
 PLEASE READ THIS WHOLE THING BEFORE YOU DM ME PLEASE MAN PLSSSSSS
 
+## UPDATE 3
+Added IP Location and changed looks a bit
+![sshot-2022-12-03-01-51-44](https://user-images.githubusercontent.com/107274162/205414989-51c24a23-f354-4c56-b7f3-f69f75731923.jpg)
+
+
 ## UPDATE 2
 
 I was bored and added a fancy mf html page with a button that opens a popup window (will only work if you use the reidrect_uri/verify aka the update below)
@@ -46,5 +51,6 @@ HERE IT POSTS TO 2 DIFFERENT WEBHOOKS. NOW CRY
 4. Host the repo you forked on https://dashboard.render.com/ (WEB SERVICE) link to github and link the repo and just put a name and dont change anything else
 
 ## PREVIEW
-![sshot-2022-11-30-16-20-55 (1)](https://user-images.githubusercontent.com/107274162/204861343-41629c0b-976b-4e77-9681-928be28961cc.jpg)
+![sshot-2022-12-03-01-51-44](https://user-images.githubusercontent.com/107274162/205415000-dd0ee8ba-0b81-49a5-8c54-285abace75d5.jpg)
+
 

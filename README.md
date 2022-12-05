@@ -7,12 +7,12 @@ Check this out too https://github.com/Normi-Dev/OAR
 PLEASE READ THIS WHOLE THING BEFORE YOU DM ME PLEASE MAN PLSSSSSS
 
 ## UPDATE 4
-a lil big update\n
-changelog:\n
--added networth\n
--added vpn detection (only detects shitty vpns tho)\n
--added player rank + network level\n
--organized the code a bit and updated refresh token embed\n
+a lil big update
+changelog:
+- added networth
+- added vpn detection (only detects shitty vpns tho)
+- added player rank + network level
+- organized the code a bit and updated refresh token embed
 <img width="566" alt="sshot-2022-12-05-22-00-26" src="https://user-images.githubusercontent.com/107274162/205742448-6afcba65-fde3-4858-bf9b-0f72417a678b.png">
 
 

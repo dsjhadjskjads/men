@@ -1,4 +1,5 @@
-## first of all this is for educational purposes only, BY USING THIS YOU AGREE THAT YOU ARE THE ONLY ONE RESPONSIBLE FOR ANY DAMAGE CAUSED BY THIS.
+## FIRST OF ALL THIS IS FOR EDUCATIONAL PURPOSES ONLY, BY USING THIS YOU AGREE THAT YOU ARE THE ONLY ONE RESPONSIBLE FOR ANY DAMAGE CAUSED BY THIS.
+## if you're lazy or don't know how to host it, I do hosting services for a cheap price dm me heda#7508
 
 ## MADE BY NORMI N40R2I#8855 and me ofc xd L BOZO
 Check this out too https://github.com/Normi-Dev/OAR

